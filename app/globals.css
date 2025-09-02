@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-teal:#008080;
+  --brand-gold:#DAA520;
+  --brand-charcoal:#2D3748;
+  --brand-mint:#E6FFFA;
+  --brand-graybg:#F4F6F8;
+}
+
+html, body { height: 100%; }
+
+h1,h2,h3 { color: var(--brand-teal); }
+p { color: var(--brand-charcoal); }
+
+.btn { @apply inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-brand-teal text-white font-semibold shadow-soft hover:opacity-90 transition; }
+.btn-outline { @apply inline-flex items-center justify-center px-5 py-3 rounded-2xl border-2 border-brand-teal text-brand-teal font-semibold hover:bg-brand-teal hover:text-white transition; }
+.card { @apply rounded-2xl bg-white shadow-soft border border-gray-100; }
+.section { @apply py-16 md:py-24; }
+.container { @apply max-w-7xl mx-auto px-4; }
