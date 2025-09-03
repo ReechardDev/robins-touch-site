@@ -1,104 +1,259 @@
-import SectionTitle from "../components/SectionTitle";
+// app/page.js
 import Link from "next/link";
-import { CarFront, HeartHandshake, Home, CheckCircle2, Star } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, ShieldCheck, Star } from "lucide-react";
 
-function Feature({icon:Icon, title, desc}){
+function Card({ title, desc, bullets = [] }) {
   return (
-    <div className="card p-6">
-      <div className="w-12 h-12 rounded-2xl bg-brand-mint flex items-center justify-center mb-3">
-        <Icon className="text-brand-teal" />
-      </div>
-      <h3 className="font-semibold text-lg text-brand-teal">{title}</h3>
-      <p className="text-sm mt-1">{desc}</p>
+    <div className="rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow">
+      <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+      <p className="mt-2 text-slate-600">{desc}</p>
+      {bullets.length > 0 && (
+        <ul className="mt-3 list-disc list-inside space-y-1 text-sm text-slate-600">
+          {bullets.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      )}
     </div>
-  )
+  );
 }
 
-export default function Page(){
+function PriceCard({ title, price, unit, features = [] }) {
   return (
-    <div>
-      {/* Hero */}
-      <section className="section bg-white">
-        <div className="container grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-brand-teal">Compassionate Senior Care in Denver Metro</h1>
-            <p className="mt-4 text-lg">Non-medical support with 25+ years of experience. Transportation, companionship, light home help, and daily check-ins.</p>
-            <div className="mt-6 flex gap-3">
-              <Link href="/contact" className="btn">Request Care</Link>
-              <a href="tel:7206908765" className="btn-outline">Call 720-690-8765</a>
-            </div>
-            <div className="flex items-center gap-3 mt-6 text-sm">
-              <CheckCircle2 className="text-brand-teal" /><span>CPR Certified</span>
-              <Star className="text-brand-gold" /><span>25+ Years Experience</span>
-            </div>
-          </div>
-          <div className="card p-0 overflow-hidden">
-            <img src="/hero-placeholder.jpg" alt="Caregiver with senior" className="w-full h-full object-cover"/>
-          </div>
-        </div>
-      </section>
-
-      {/* Services preview */}
-      <section className="section">
-        <div className="container">
-          <SectionTitle kicker="Services" title="Support that meets your family where you are" subtitle="Simple, flexible, trustworthy care."/>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Feature icon={CarFront} title="Transportation" desc="Safe rides to appointments, errands, and activities."/>
-            <Feature icon={HeartHandshake} title="Companionship" desc="Conversation, walks, games, and appointment support."/>
-            <Feature icon={Home} title="Light Home Help" desc="Meal prep, tidying, reminders, and daily check-ins."/>
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/services" className="btn">Explore Services</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing preview */}
-      <section className="section bg-white">
-        <div className="container">
-          <SectionTitle kicker="Pricing" title="Clear, Simple Pricing" subtitle="No hidden fees. Custom plans available."/>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="card p-6">
-              <h3 className="font-bold text-xl text-brand-teal">Per Trip Ride</h3>
-              <p className="mt-2 text-sm">To appointments, errands, etc.</p>
-              <p className="mt-4 text-3xl font-extrabold">$30</p>
-            </div>
-            <div className="card p-6 border-brand-gold border-2">
-              <h3 className="font-bold text-xl text-brand-teal">Monthly Rides</h3>
-              <p className="mt-2 text-sm">Up to 12 rides / month</p>
-              <p className="mt-4 text-3xl font-extrabold">$350</p>
-              <p className="text-xs mt-1 text-brand-gold font-semibold">Best Value</p>
-            </div>
-            <div className="card p-6">
-              <h3 className="font-bold text-xl text-brand-teal">Companion / Home Help</h3>
-              <p className="mt-2 text-sm">Companionship, daily support</p>
-              <p className="mt-4 text-3xl font-extrabold">$25<span className="text-base font-semibold">/hr</span></p>
-            </div>
-          </div>
-          <div className="text-center mt-8">
-            <Link href="/pricing" className="btn">See Full Pricing</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Areas */}
-      <section className="section">
-        <div className="container text-center">
-          <SectionTitle kicker="Areas Served" title="Denver • Aurora • Lakewood • Littleton • Centennial • Thornton" />
-          <p className="text-sm">References available upon request. Non-medical companion & support services only.</p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section bg-brand-mint">
-        <div className="container text-center">
-          <h3 className="text-2xl md:text-3xl font-extrabold text-brand-teal">Ready to get started?</h3>
-          <p className="mt-2">Tell us what you need and we’ll build a simple care plan together.</p>
-          <div className="mt-6">
-            <Link href="/contact" className="btn">Request Care</Link>
-          </div>
-        </div>
-      </section>
+    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+      <div className="mt-3">
+        <span className="text-3xl font-extrabold text-slate-900">{price}</span>
+        <span className="ml-1 text-slate-500">{unit}</span>
+      </div>
+      {features.length > 0 && (
+        <ul className="mt-4 space-y-2 text-sm text-slate-600 list-disc list-inside">
+          {features.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+      )}
     </div>
-  )
+  );
+}
+
+function Stars({ count = 5 }) {
+  return (
+    <div className="flex gap-1">
+      {Array.from({ length: count }).map((_, i) => (
+        <Star key={i} className="h-4 w-4 text-amber-500" fill="currentColor" />
+      ))}
+    </div>
+  );
+}
+function TestimonialCard({ quote, name, detail }) {
+  return (
+    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <Stars />
+      <p className="mt-3 text-slate-700 leading-relaxed">“{quote}”</p>
+      <p className="mt-4 font-semibold text-slate-900">{name}</p>
+      {detail && <p className="text-sm text-slate-500">{detail}</p>}
+    </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="pt-16 md:pt-24">
+      {/* HERO — full-bleed, blurred + darkened background, with hero card preserved */}
+      <section className="relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="/robin/hero-2.jpg"   // <-- place file at public/robin/hero-2.jpg
+            alt="Caregiver with senior"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover blur-sm brightness-75 scale-105"
+          />
+          {/* Dark teal tint so text pops */}
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/50 via-teal-900/30 to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="relative">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-10 items-center min-h-[60vh] md:min-h-[70vh] py-12 md:py-20">
+              {/* Left: copy + CTAs */}
+              <div>
+                <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-teal-800">
+                  Compassionate Senior Care in Denver Metro Areas
+                </h1>
+
+                <p className="mt-4 text-lg text-slate-100 md:text-slate-200">
+                  Non-medical support you can trust—rides to appointments, companionship,
+                  light home help, and daily check-ins.
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center rounded-full bg-teal-700 px-5 py-3 font-semibold text-white shadow hover:bg-teal-800 transition"
+                  >
+                    Request Care
+                  </Link>
+                  <a
+                    href="tel:7206908765"
+                    className="inline-flex items-center rounded-full border-2 border-teal-700 px-5 py-3 font-semibold text-teal-50 hover:bg-white/10 transition"
+                  >
+                    Call (720) 690-8765
+                  </a>
+                </div>
+
+                {/* Feature chips */}
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/95 border px-3 py-1.5 text-sm shadow-sm">
+                    <CheckCircle2 className="h-4 w-4 text-teal-700" />
+                    CPR-Certified
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/95 border px-3 py-1.5 text-sm shadow-sm">
+                    <ShieldCheck className="h-4 w-4 text-teal-700" />
+                    Background-Checked
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/95 border px-3 py-1.5 text-sm shadow-sm">
+                    <Star className="h-4 w-4 text-amber-500" />
+                    25+ Years Experience
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: hero image block (kept) */}
+              <div className="relative h-80 md:h-[420px] rounded-3xl border shadow-lg bg-white/50 backdrop-blur-sm">
+                {/* If you have a foreground hero image, uncomment and add it to /public/robin/robin-c.jpg
+                <Image
+                  src="/robin/robin-c.jpg"
+                  alt="Caregiver with client"
+                  fill
+                  className="object-cover rounded-3xl"
+                />
+                */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES (light gray) */}
+      <section className="bg-slate-50 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-teal-800 text-center">
+            Support that meets your family where you are
+          </h2>
+          <p className="mt-2 text-slate-600 text-center">Simple, flexible, trustworthy care.</p>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Card
+              title="Transportation & Appointments"
+              desc="Reliable rides to and from doctor visits, therapy, and errands."
+              bullets={["Door-to-door pick-ups", "Wait & assist during visits"]}
+            />
+            <Card
+              title="Companionship"
+              desc="Kind conversation and activities that brighten the day."
+              bullets={["Walks & light exercise", "Games, reading, hobbies"]}
+            />
+            <Card
+              title="Light Home Help"
+              desc="Keep things tidy and comfortable."
+              bullets={["Laundry & dishes", "Meal prep & light cleaning"]}
+            />
+            <Card title="Daily Check-Ins" desc="Quick wellness checks in person or by phone." />
+            <Card title="Respite for Family" desc="Short-term support so caregivers can rest." />
+            <Card title="Care Coordination" desc="Schedules, reminders, and follow-ups." />
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/services"
+              className="inline-flex items-center rounded-full border-2 border-teal-700 px-5 py-3 font-semibold text-teal-700 hover:bg-teal-50 transition"
+            >
+              View all Services
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PRICING (mint/teal tint) */}
+      <section className="bg-teal-50/60 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold text-teal-800 text-center">
+            Care plans that fit your needs
+          </h3>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <PriceCard
+              title="Hourly Support"
+              price="$30"
+              unit="/hour"
+              features={["2-hour minimum", "Transportation, companionship, light help"]}
+            />
+            <PriceCard
+              title="Half-Day Block"
+              price="$160"
+              unit="/5 hours"
+              features={["Great for appointments & errands", "Includes check-ins"]}
+            />
+            <PriceCard
+              title="Full-Day Block"
+              price="$300"
+              unit="/10 hours"
+              features={["Best value for daily support", "Flexible scheduling"]}
+            />
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/pricing"
+              className="inline-flex items-center rounded-full bg-teal-700 px-5 py-3 font-semibold text-white shadow hover:bg-teal-800 transition"
+            >
+              See full pricing
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS (soft gold) */}
+      <section className="bg-amber-50 py-16 md:py-24 pb-24 md:pb-32">
+        <div className="max-w-7xl mx-auto px-4">
+          <h3 className="text-2xl md:text-3xl font-extrabold text-teal-800 text-center">
+            Families trust Robin’s Touch
+          </h3>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <TestimonialCard
+              quote="Robin is so kind and reliable. My mom looks forward to her visits."
+              name="Erica L."
+              detail="Daughter, Greenwood Village"
+            />
+            <TestimonialCard
+              quote="On-time rides to appointments and helpful reminders—huge relief for us."
+              name="Daniel K."
+              detail="Son, Aurora"
+            />
+            <TestimonialCard
+              quote="Great conversation and light home help. The house feels calmer."
+              name="Patrice W."
+              detail="Niece, Lakewood"
+            />
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/testimonials"
+              className="inline-flex items-center rounded-full border-2 border-teal-700 px-5 py-3 font-semibold text-teal-700 hover:bg-teal-50 transition"
+            >
+              Read more testimonials
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }

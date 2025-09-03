@@ -1,27 +1,37 @@
+// app/about/page.js
 import SectionTitle from "../../components/SectionTitle";
 
-export default function Page(){
+export default function AboutPage() {
   return (
-    <section className="section">
-      <div className="container grid md:grid-cols-2 gap-10 items-start">
-        <div>
-          <SectionTitle kicker="About" title="Meet Robin" />
-          <p className="text-base leading-7">
-            Hi, I’m Robin Miller. I bring 25+ years of professional experience in hospice and elder care.
-            Through Robin’s Touch Senior Care, I provide compassionate, respectful support that helps seniors
-            live safely and happily at home. I’m CPR Certified and proud to serve families across Denver metro.
-          </p>
-          <ul className="mt-6 text-sm list-disc pl-5 space-y-2">
-            <li>CPR Certified</li>
-            <li>25+ Years Experience</li>
-            <li>Locally owned & community focused</li>
-            <li>References available upon request</li>
-          </ul>
-        </div>
-        <div className="card overflow-hidden">
-          <img src="/about-placeholder.jpg" alt="Robin with client" className="w-full h-full object-cover" />
+    <main className="pt-16 md:pt-24 pb-24 md:pb-32 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <SectionTitle
+          kicker="About"
+          title="Care built on trust & experience"
+          subtitle="25+ years supporting seniors with kindness, respect, and reliability."
+        />
+
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <div className="rounded-2xl border bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-slate-800">Our Approach</h3>
+            <p className="mt-2 text-slate-600">
+              We focus on non-medical support that helps seniors feel safe, seen, and
+              independent. From rides and light home help to daily companionship, our care
+              fits your family’s routines.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-slate-800">Values</h3>
+            <ul className="mt-2 space-y-2 text-slate-600 list-disc list-inside">
+              <li>Compassion & dignity</li>
+              <li>Clear, punctual communication</li>
+              <li>Background-checked, CPR-certified</li>
+              <li>Flexible, family-first scheduling</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </section>
-  )
+    </main>
+  );
 }

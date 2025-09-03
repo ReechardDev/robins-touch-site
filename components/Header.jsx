@@ -1,39 +1,48 @@
+// components/Header.jsx
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
 
-export default function Header(){
-  const [open, setOpen] = useState(false);
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+function NavLink({ href, children }) {
+  const pathname = usePathname();
+  const active = pathname === href;
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-      <div className="container flex items-center justify-between py-3">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="Robin's Touch logo" width={36} height={36} />
-          <span className="text-lg font-bold text-brand-teal">Robin&apos;s Touch</span>
+    <Link
+      href={href}
+      className={`px-3 py-2 rounded-full transition ${
+        active ? "bg-teal-100 text-teal-800" : "text-slate-700 hover:text-teal-700"
+      }`}
+    >
+      {children}
+    </Link>
+  );
+}
+
+export default function Header() {
+  return (
+    <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+        <Link href="/" className="font-semibold text-teal-800">
+          Robin’s Touch
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          <Link href="/services" className="hover:text-brand-teal">Services</Link>
-          <Link href="/pricing" className="hover:text-brand-teal">Pricing</Link>
-          <Link href="/about" className="hover:text-brand-teal">About</Link>
-          <Link href="/contact" className="btn">Request Care</Link>
+        <nav className="hidden md:flex items-center gap-2">
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/services">Services</NavLink>
+          <NavLink href="/pricing">Pricing</NavLink>
+          <NavLink href="/testimonials">Testimonials</NavLink>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
         </nav>
 
-        <button onClick={()=>setOpen(!open)} className="md:hidden border rounded-xl px-3 py-2">
-          Menu
-        </button>
+        <Link
+          href="/contact"
+          className="hidden md:inline-flex rounded-full bg-teal-700 px-4 py-2 font-semibold text-white hover:bg-teal-800 transition"
+        >
+          Request Care
+        </Link>
       </div>
-      {open && (
-        <div className="md:hidden border-t bg-white">
-          <div className="container py-3 flex flex-col gap-3">
-            <Link href="/services" onClick={()=>setOpen(false)}>Services</Link>
-            <Link href="/pricing" onClick={()=>setOpen(false)}>Pricing</Link>
-            <Link href="/about" onClick={()=>setOpen(false)}>About</Link>
-            <Link href="/contact" className="btn" onClick={()=>setOpen(false)}>Request Care</Link>
-          </div>
-        </div>
-      )}
     </header>
-  )
+  );
 }

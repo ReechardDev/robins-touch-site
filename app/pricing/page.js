@@ -1,28 +1,61 @@
+// app/pricing/page.js
 import SectionTitle from "../../components/SectionTitle";
 
-function Card({title, desc, price, note, highlight}){
+function PriceCard({ title, price, unit, features = [] }) {
   return (
-    <div className={`card p-6 ${highlight ? "border-2 border-brand-gold" : ""}`}>
-      <h3 className="font-bold text-xl text-brand-teal">{title}</h3>
-      <p className="mt-2 text-sm">{desc}</p>
-      <p className="mt-4 text-4xl font-extrabold">{price}</p>
-      {note && <p className="text-xs mt-2 text-brand-charcoal/70">{note}</p>}
+    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+      <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
+      <div className="mt-3">
+        <span className="text-3xl font-extrabold text-slate-900">{price}</span>
+        <span className="ml-1 text-slate-500">{unit}</span>
+      </div>
+      {features.length > 0 && (
+        <ul className="mt-4 space-y-2 text-sm text-slate-600 list-disc list-inside">
+          {features.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+      )}
     </div>
-  )
+  );
 }
 
-export default function Page(){
+export default function PricingPage() {
   return (
-    <section className="section">
-      <div className="container">
-        <SectionTitle kicker="Pricing" title="Transparent, Simple Rates" subtitle="No hidden fees. Custom plans available."/>
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card title="Per Trip Ride" desc="Appointments, errands, and more" price="$30" />
-          <Card title="Monthly Rides" desc="Up to 12 rides / month" price="$350" note="Best for recurring treatments" highlight />
-          <Card title="Companion / Home Help" desc="Companionship & daily support" price="$25/hr" />
+    <main className="pt-16 md:pt-24 pb-24 md:pb-32 bg-teal-50/60">
+      <div className="max-w-7xl mx-auto px-4">
+        <SectionTitle
+          kicker="Pricing"
+          title="Simple, flexible care plans"
+          subtitle="Transparent rates with no long-term contracts."
+        />
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <PriceCard
+            title="Hourly Support"
+            price="$30"
+            unit="/hour"
+            features={["2-hour minimum", "Transportation, companionship, light help"]}
+          />
+          <PriceCard
+            title="Half-Day Block"
+            price="$160"
+            unit="/5 hours"
+            features={["Good for appointments & errands", "Includes check-ins"]}
+          />
+          <PriceCard
+            title="Full-Day Block"
+            price="$300"
+            unit="/10 hours"
+            features={["Best value for daily support", "Flexible scheduling"]}
+          />
         </div>
-        <p className="text-sm mt-6">Have unique needs? We’ll tailor a plan that fits your schedule and budget.</p>
+
+        <p className="mt-8 text-sm text-slate-600">
+          Rates may vary based on distance and specific care needs. Overnight support and
+          recurring schedules available—ask for a custom quote.
+        </p>
       </div>
-    </section>
-  )
+    </main>
+  );
 }

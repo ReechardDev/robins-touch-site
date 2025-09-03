@@ -1,9 +1,15 @@
-export default function SectionTitle({ kicker, title, subtitle }){
+// components/SectionTitle.jsx
+export default function SectionTitle({ kicker, title, subtitle, align = "center" }) {
+  const alignment = align === "left" ? "text-left" : "text-center";
   return (
-    <div className="text-center max-w-3xl mx-auto mb-10">
-      {kicker && <p className="uppercase tracking-widest text-xs text-brand-teal/80">{kicker}</p>}
-      <h2 className="text-3xl md:text-4xl font-extrabold text-brand-teal">{title}</h2>
-      {subtitle && <p className="mt-3 text-base text-brand-charcoal/80">{subtitle}</p>}
+    <div className={alignment}>
+      {kicker && (
+        <p className="text-xs font-semibold tracking-wider text-teal-700 uppercase">
+          {kicker}
+        </p>
+      )}
+      <h2 className="text-3xl md:text-4xl font-extrabold text-teal-800">{title}</h2>
+      {subtitle && <p className="mt-2 text-slate-600">{subtitle}</p>}
     </div>
-  )
+  );
 }
