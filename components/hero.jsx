@@ -3,25 +3,19 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* background image + overlays */}
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <Image
-          src="/robin/caregiver-hero.jpg"  // lives in /public/robin
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center blur-[1px]"
-        />
-        <div className="absolute inset-0 bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-transparent to-transparent" />
-      </div>
+<section className="relative overflow-hidden pt-0 -mt-6 md:-mt-8">
+  <div className="absolute inset-0">
+    {/* keep your existing image path if you want; this one exists from your tree */}
+    <Image src="/robin/caregiver-hero.jpg" alt="" fill priority className="object-cover" />
+    <div className="absolute inset-0 bg-emerald-950/55" />
+<div className="absolute inset-0 bg-gradient-to-r from-emerald-950/60 via-emerald-900/40 to-transparent" />
+    {/* darker gradient for legibility */}
+    <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/70 via-emerald-900/55 to-transparent backdrop-blur-[1px]" />
+  </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* left text */}
-          <div>
+      <div className="text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.7)]">
+  {/* heading, paragraph, buttons… */}
+</div>
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-emerald-900">
               Compassionate Senior Care in Denver Metro Areas
             </h1>
