@@ -38,7 +38,7 @@ export default function Header() {
 
         <Link
           href="/contact"
-          className="hidden md:inline-flex rounded-full bg-teal-700 px-4 py-2 font-semibold text-white hover:bg-teal-800 transition"
+          className="hidden md:inline-flex rounded-full bg-teal-500 px-4 py-2 font-semibold text-white hover:bg-teal-800 transition"
         >
           Request Care
         </Link>

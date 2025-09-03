@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="font-sans bg-white text-slate-900">
+      <body className="font-sans bg-teal text-slate-900">
         <Header />
         {/* single spacer for the sticky/fixed header height */}
         <main className="pt-20 md:pt-24">{children}</main>

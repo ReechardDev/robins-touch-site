@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-teal-200 bg-gradient-to-t from-teal-100 to-teal-50">
+    <footer className="border-t border-teal-200 bg-gradient-to-t from-teal-50 to-grey-50">
       <div className="max-w-7xl mx-auto px-4 py-8 md:py-10">
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {/* Brand blurb */}
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 md:mt-8 border-t border-teal-200 pt-4 text-xs text-slate-700/90">
+        <div className="mt-6 md:mt-8 border-t border-green-200 pt-4 text-xs text-slate-700/90">
           © {new Date().getFullYear()} Robin’s Touch Senior Care. All rights reserved.
         </div>
       </div>

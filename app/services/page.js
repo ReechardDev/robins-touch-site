@@ -1,63 +1,90 @@
-// app/services/page.js
-import Link from "next/link";
-import SectionTitle from "../../components/SectionTitle";
+export const metadata = {
+  title: "Services – Robin’s Touch Senior Care",
+  description: "Simple, flexible, trustworthy care where you are.",
+};
 
-function Card({ title, desc, bullets = [] }) {
-  return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow">
-      <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
-      <p className="mt-2 text-slate-600">{desc}</p>
-      {bullets.length > 0 && (
-        <ul className="mt-3 list-disc list-inside space-y-1 text-sm text-slate-600">
-          {bullets.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+const cardBase =
+  "rounded-3xl border border-teal-200/60 bg-teal-50/70 p-6 shadow-sm hover:bg-teal-100 transition-colors";
 
 export default function ServicesPage() {
   return (
-    <main className="pt-16 md:pt-24 pb-24 md:pb-32 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <SectionTitle
-          kicker="Services"
-          title="Support that meets your family where you are"
-          subtitle="Simple, flexible, trustworthy care."
-        />
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Card
-            title="Transportation & Appointments"
-            desc="Reliable rides to and from doctor visits, therapy, and errands."
-            bullets={["Door-to-door pick-ups", "Wait & assist during visits"]}
-          />
-          <Card
-            title="Companionship"
-            desc="Kind conversation and activities that brighten the day."
-            bullets={["Walks & light exercise", "Games, reading, hobbies"]}
-          />
-          <Card
-            title="Light Home Help"
-            desc="Keep things tidy and comfortable."
-            bullets={["Laundry & dishes", "Meal prep & light cleaning"]}
-          />
-          <Card title="Daily Check-Ins" desc="Quick wellness checks in person or by phone." />
-          <Card title="Respite for Family" desc="Short-term support so caregivers can rest." />
-          <Card title="Care Coordination" desc="Schedules, reminders, and follow-ups." />
+    <main className="bg-slate-50">
+      {/* Header */}
+      <section className="py-14 md:py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-center text-emerald-900">
+            Support that meets your family where you are
+          </h1>
+          <p className="text-center text-slate-600 mt-3">
+            Simple, flexible, trustworthy care.
+          </p>
         </div>
+      </section>
 
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/contact"
-            className="inline-flex items-center rounded-full bg-teal-700 px-5 py-3 font-semibold text-white shadow hover:bg-teal-800 transition"
-          >
-            Request Care
-          </Link>
+      {/* Services grid */}
+      <section className="pb-20">
+        <div className="max-w-6xl mx-auto px-4 grid gap-6 md:gap-8 md:grid-cols-3">
+          {/* 1 */}
+          <div className={cardBase}>
+            <h3 className="font-semibold text-lg">🚗 Transportation & Appointments</h3>
+            <p className="text-slate-600 mt-2">
+              Reliable rides to and from doctor visits, therapy, and errands.
+            </p>
+            <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
+              <li>Door-to-door pick-ups</li>
+              <li>Wait & assist during visits</li>
+            </ul>
+          </div>
+
+          {/* 2 */}
+          <div className={cardBase}>
+            <h3 className="font-semibold text-lg">🤝 Companionship</h3>
+            <p className="text-slate-600 mt-2">
+              Kind conversation and activities that brighten the day.
+            </p>
+            <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
+              <li>Walks & light exercise</li>
+              <li>Games, reading, hobbies</li>
+            </ul>
+          </div>
+
+          {/* 3 */}
+          <div className={cardBase}>
+            <h3 className="font-semibold text-lg">🏠 Light Home Help</h3>
+            <p className="text-slate-600 mt-2">
+              Keep things tidy and comfortable.
+            </p>
+            <ul className="list-disc pl-5 mt-3 space-y-1 text-slate-700">
+              <li>Laundry & dishes</li>
+              <li>Meal prep & light cleaning</li>
+            </ul>
+          </div>
+
+          {/* 4 */}
+          <div className={cardBase}>
+            <h3 className="font-semibold text-lg">📞 Daily Check-Ins</h3>
+            <p className="text-slate-600 mt-2">
+              Quick wellness checks in person or by phone.
+            </p>
+          </div>
+
+          {/* 5 */}
+          <div className={cardBase}>
+            <h3 className="font-semibold text-lg">🛌 Respite for Family</h3>
+            <p className="text-slate-600 mt-2">
+              Short-term support so caregivers can rest.
+            </p>
+          </div>
+
+          {/* 6 */}
+          <div className={cardBase}>
+            <h3 className="font-semibold text-lg">🗓️ Care Coordination</h3>
+            <p className="text-slate-600 mt-2">
+              Schedules, reminders, and follow-ups.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

@@ -1,11 +1,15 @@
+const homeCard =
+  "rounded-3xl border border-teal-200/60 bg-teal-50/70 p-6 shadow-sm hover:bg-teal-100 transition-colors";
+// if your accent is emerald, swap teal→emerald
 // app/page.js
 import Link from "next/link";
 import Image from "next/image";
 import { CheckCircle2, ShieldCheck, Star } from "lucide-react";
-
+const cardBase =
+  "rounded-3xl border border-teal-200/60 bg-teal-50/70 p-6 shadow-sm hover:bg-teal-100 transition-colors";
 function Card({ title, desc, bullets = [] }) {
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow">
+    <div className={homeCard}>
       <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
       <p className="mt-2 text-slate-600">{desc}</p>
       {bullets.length > 0 && (
@@ -21,7 +25,7 @@ function Card({ title, desc, bullets = [] }) {
 
 function PriceCard({ title, price, unit, features = [] }) {
   return (
-    <div className="rounded-2xl border bg-white p-6 shadow-sm">
+    <div className={homeCard}>
       <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
       <div className="mt-3">
         <span className="text-3xl font-extrabold text-slate-900">{price}</span>
@@ -141,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES (light gray) */}
-      <section className="bg-slate-50 py-16 md:py-24">
+      <section className="bg-grey-50 py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-extrabold text-teal-800 text-center">
             Support that meets your family where you are
@@ -150,23 +154,23 @@ export default function Home() {
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Card
-              title="Transportation & Appointments"
+              title="🚗 Transportation & Appointments"
               desc="Reliable rides to and from doctor visits, therapy, and errands."
               bullets={["Door-to-door pick-ups", "Wait & assist during visits"]}
             />
             <Card
-              title="Companionship"
+              title="🤝 Companionship"
               desc="Kind conversation and activities that brighten the day."
               bullets={["Walks & light exercise", "Games, reading, hobbies"]}
             />
             <Card
-              title="Light Home Help"
+              title="🏠 Light Home Help"
               desc="Keep things tidy and comfortable."
               bullets={["Laundry & dishes", "Meal prep & light cleaning"]}
             />
-            <Card title="Daily Check-Ins" desc="Quick wellness checks in person or by phone." />
-            <Card title="Respite for Family" desc="Short-term support so caregivers can rest." />
-            <Card title="Care Coordination" desc="Schedules, reminders, and follow-ups." />
+            <Card title="📞 Daily Check-Ins" desc="Quick wellness checks in person or by phone." />
+            <Card title="🛌 Respite for Family" desc="Short-term support so caregivers can rest." />
+            <Card title="🗓️ Care Coordination" desc="Schedules, reminders, and follow-ups." />
           </div>
 
           <div className="mt-10 flex justify-center">
